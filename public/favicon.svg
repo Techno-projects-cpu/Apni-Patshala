@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Apni Pathshala mark">
+  <rect width="64" height="64" rx="15" fill="#ffffff"/>
+  <rect x="4" y="4" width="56" height="56" rx="13" fill="none" stroke="#0266FF" stroke-opacity="0.14" stroke-width="2"/>
+  <!-- back figure -->
+  <rect x="11" y="11" width="21" height="21" rx="5" fill="#0266FF"/>
+  <circle cx="21.5" cy="20" r="3.6" fill="#ffffff"/>
+  <path d="M15.4 29.6a6.1 6.1 0 0 1 12.2 0z" fill="#ffffff"/>
+  <!-- front figure -->
+  <rect x="32" y="11" width="21" height="21" rx="5" fill="#F58220"/>
+  <circle cx="42.5" cy="20" r="3.6" fill="#ffffff"/>
+  <path d="M36.4 29.6a6.1 6.1 0 0 1 12.2 0z" fill="#ffffff"/>
+  <!-- the shared "book / path" swoosh -->
+  <path d="M14 40c7.4 0 12.6 2.6 18 8.6 5.4-6 10.6-8.6 18-8.6" fill="none" stroke="#0266FF" stroke-width="5" stroke-linecap="round"/>
+</svg>
