@@ -1,0 +1,178 @@
+@import 'tailwindcss';
+
+/* ------------------------------------------------------------------
+   Apni Pathshala — design tokens
+   Colours sampled from the official Apni Pathshala brand artwork:
+     brand blue  #0266FF   |   flame orange  #F58220
+   This is an unofficial, student-built redesign concept.
+------------------------------------------------------------------ */
+
+@theme {
+  --font-sans: 'Inter Variable', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-display: 'Plus Jakarta Sans Variable', 'Inter Variable', ui-sans-serif, system-ui, sans-serif;
+
+  /* Brand blue (#0266FF) */
+  --color-brand-50: #eef5ff;
+  --color-brand-100: #d9e8ff;
+  --color-brand-200: #b8d4ff;
+  --color-brand-300: #8abaff;
+  --color-brand-400: #4e96ff;
+  --color-brand-500: #1f76ff;
+  --color-brand-600: #0266ff;
+  --color-brand-700: #0250cc;
+  --color-brand-800: #063f9c;
+  --color-brand-900: #0a3577;
+  --color-brand-950: #08213f;
+
+  /* Flame orange (#F58220) */
+  --color-flame-50: #fff8ed;
+  --color-flame-100: #ffefd4;
+  --color-flame-200: #fedaa8;
+  --color-flame-300: #fdc072;
+  --color-flame-400: #fb9a3b;
+  --color-flame-500: #f58220;
+  --color-flame-600: #e06d0c;
+  --color-flame-700: #b8530b;
+  --color-flame-800: #934311;
+  --color-flame-900: #78390f;
+
+  /* Ink navy — used for dark sections and body copy */
+  --color-ink-50: #f4f7fc;
+  --color-ink-100: #e6ecf7;
+  --color-ink-200: #ccd8ec;
+  --color-ink-300: #a3b7da;
+  --color-ink-400: #7290c3;
+  --color-ink-500: #4f70ac;
+  --color-ink-600: #3b5790;
+  --color-ink-700: #314675;
+  --color-ink-800: #1d2b4d;
+  --color-ink-900: #0e1b36;
+  --color-ink-950: #060e21;
+
+  --shadow-soft: 0 1px 2px rgb(9 20 44 / 0.04), 0 12px 32px -12px rgb(9 20 44 / 0.16);
+  --shadow-lift: 0 2px 4px rgb(9 20 44 / 0.05), 0 24px 56px -20px rgb(9 20 44 / 0.28);
+  --shadow-glow: 0 18px 60px -18px rgb(2 102 255 / 0.55);
+
+  --animate-marquee: marquee 42s linear infinite;
+  --animate-float: float 7s ease-in-out infinite;
+  --animate-pulse-ring: pulse-ring 2.6s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-14px);
+  }
+}
+
+@keyframes pulse-ring {
+  0% {
+    box-shadow: 0 0 0 0 rgb(2 102 255 / 0.45);
+  }
+  70% {
+    box-shadow: 0 0 0 14px rgb(2 102 255 / 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgb(2 102 255 / 0);
+  }
+}
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-white font-sans text-ink-800 antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display text-ink-950;
+    letter-spacing: -0.022em;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  ::selection {
+    background: var(--color-brand-600);
+    color: white;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-brand-600);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+    }
+  }
+}
+
+@utility shell {
+  @apply mx-auto w-full max-w-[80rem] px-5 sm:px-8 lg:px-10;
+}
+
+@utility eyebrow {
+  @apply inline-flex items-center gap-2 text-[0.72rem] font-semibold tracking-[0.18em] uppercase;
+}
+
+/* Gradient headline text */
+@utility text-gradient {
+  background-image: linear-gradient(100deg, var(--color-brand-700), var(--color-brand-600) 45%, var(--color-flame-500));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Fine dotted grid used behind hero/mission sections */
+@utility bg-dotgrid {
+  background-image: radial-gradient(rgb(2 102 255 / 0.16) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+
+@utility card-hover {
+  @apply transition-all duration-300 ease-out hover:-translate-y-1.5 hover:shadow-lift;
+}
+
+@utility no-scrollbar {
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
